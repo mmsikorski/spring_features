@@ -1,8 +1,7 @@
 package features.spring.objects.config;
 
-import features.spring.feature.ListInfo;
-import features.spring.feature.ListInfoElementsImpl;
-import features.spring.feature.ListInfoLengthImpl;
+import features.spring.feature.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -13,12 +12,16 @@ public class ObjectsConfig {
     @Order(1)
     @Bean
     ListInfo<String> getListLength() {
-        return new ListInfoLengthImpl<String>();
+        return new ListInfoLengthImpl<>();
     }
 
-    @Order(1)
+    @Order(2)
     @Bean
     ListInfo<String> getListElements() {
-        return new ListInfoElementsImpl<String>();
+        return new ListInfoElementsImpl<>();
     }
+
+    @Bean
+    ChangeListElements<String> changeListElements() { return new ChangeListElementsImpl<>(); }
+
 }
